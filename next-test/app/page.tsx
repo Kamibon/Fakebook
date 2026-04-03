@@ -1,43 +1,29 @@
-import Image from "next/image";
-import Link from "next/link";
-import NavBar from "./components/navBar";
-import { Suspense, use } from "react";
-import Searchbar from "./components/searchbar";
-import Trending from "./components/trending";
-import SideBar from "./components/sideBar";
-import Think from "./components/think";
+import { Flex, VStack } from "@chakra-ui/react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 import PostSection from "./components/postSection";
-import { useDispatch } from "react-redux";
-import { Flex } from "@chakra-ui/react";
+import Searchbar from "./components/searchbar";
+import SideBar from "./components/sideBar";
+import Trending from "./components/trending";
 
-export const metadata: Metadata ={
-  title:"Feisbook"
-}
+export const metadata: Metadata = {
+  title: "Feisbook",
+};
 
 export default function Home() {
-
-
-
-
   return (
-    <div >
-    
-    
-    <Suspense fallback = {"Miao"}>
-      
-    <Searchbar  />
-    
-    <Flex>
-    <PostSection/>
-    <Trending ></Trending>
-    
-    <SideBar/>
-    </Flex>
-    
-    </Suspense>
-    
-    
+    <div>
+      <Suspense fallback={"Caricamento dati..."}>
+        <Flex direction={"column"}>
+          <Searchbar />
+
+          <Flex gap={8} paddingTop={8}>
+            <SideBar />
+            <PostSection />
+            <Trending />
+          </Flex>
+        </Flex>
+      </Suspense>
     </div>
   );
 }
