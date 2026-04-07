@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, Box, Flex } from "@chakra-ui/react";
+import { Avatar, Box, Container, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -32,26 +32,28 @@ export default function Searchbar() {
 
   return (
     <Box className="w-[100%]">
-      <NavBar onChange={search} name={"Giorgio Armani"}></NavBar>
-
-      {searched?.map((el) => (
-        <Box
-          key={el.id.toString()}
-          className="flex flex-col border fixed top-[10%]  bg-white justify-center m-auto z-10 w-[70%]"
-        >
-          <Flex justifyContent={"center"}>
-            <Link
+      <Flex className=" flex-col items-center justify-center">
+        <NavBar onChange={search} name={"Giorgio Armani"} />
+        <Container className="w-full">
+          {searched?.map((el) => (
+            <Box
               key={el.id.toString()}
-              href={"users/" + el.id}
-              className="w-[20%] h-[8%] border-gray-400  hover:bg-slate-500  "
+              className="flex flex-col border   bg-white justify-center z-10 w-full"
             >
-              {el.username}
-              {/* <Image key={el.surname} className='w-[30%] h-[50%]' alt = "" src ={require('./pages/photo/profile.jpg')}/> */}
-              <Avatar name={el.name}></Avatar>
-            </Link>
-          </Flex>
-        </Box>
-      ))}
+              <Flex className="items-center gap-3 p-3">
+                <Avatar size={"sm"} name={el.name} />
+                <Link
+                  key={el.id.toString()}
+                  href={"users/" + el.id}
+                  className="w-[20%] h-[8%] border-gray-400  hover:bg-slate-500  "
+                >
+                  {el.username}
+                </Link>
+              </Flex>
+            </Box>
+          ))}
+        </Container>
+      </Flex>
     </Box>
   );
 }

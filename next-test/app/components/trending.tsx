@@ -25,7 +25,7 @@ export default function Trending(/* {openChat}: myProps */) {
 
   return (
     <Flex
-      className=" overflow-scroll md:w-[30%] md:block hidden "
+      className=" md:w-[30%] h-screen md:block hidden sticky top-0"
       direction={"column"}
     >
       <Box>
@@ -35,8 +35,8 @@ export default function Trending(/* {openChat}: myProps */) {
       </Box>
       <Divider></Divider>
       ONLINE
-      <Flex direction={"column"}>
-        <List className="flex flex-col gap-3 justify-end items-end">
+      <Flex className="h-96 overflow-y-scroll no-scrollbar" direction={"column"}>
+        <List className="flex flex-col gap-3 justify-end items-end ">
           {users?.map((elem) => (
             <ListItem className="w-full" key={elem.id.toString()}>
               <Button

@@ -29,7 +29,7 @@ export default function PostSection() {
     <div id="post" className="w-full px-4 md:w-[40%]">
       <div className="w-[100%] mx-auto flex flex-col items-center   ">
         <VStack>
-          <Flex direction={"column"} gap={20} alignItems={"center"}>
+          <Flex className="overflow-scroll" direction={"column"} gap={20} alignItems={"center"}>
             <Think />
             {posts.map((p) => (
               <PostComp

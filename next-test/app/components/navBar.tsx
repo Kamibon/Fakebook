@@ -12,15 +12,18 @@ export default function NavBar({ name, onChange }: myProps) {
         className=" bg-blue-800 py-2 px-3"
         gap={6}
       >
-        <Heading className="text-white hidden md:block" color={"white"}>Feisbook</Heading>
-         <Heading className="text-white md:hidden block" color={"white"}>f</Heading>
+        <Heading className="text-white hidden md:block" color={"white"}>
+          Feisbook
+        </Heading>
+        <Heading className="text-white md:hidden block" color={"white"}>
+          f
+        </Heading>
         <Input
-          width={"30%"}
-          bg={"white"}
+          className="w-[30%] bg-white"
           name="search"
           placeholder="Cerca qui i tuoi amici"
           onChange={(event) => onChange(event.target.value)}
-        ></Input>
+        />
 
         <Flex alignItems={"center"}>
           <Avatar name={name}></Avatar>

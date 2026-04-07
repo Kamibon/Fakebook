@@ -7,6 +7,7 @@ import {
   Box,
   Button,
   Card,
+  Container,
   Divider,
   Flex,
   Heading,
@@ -40,15 +41,6 @@ export default function PostComp({ id, uid, name, title, body }: myProps) {
 
   const likeString = liked ? "text-blue-600" : "text-black";
 
-  /* function addLike(){
-  
-  likes.push(localStorage.getItem("user"))
-  fetch(url+ 'posts/' +id + '.json', {method:'PATCH', body:JSON.stringify({likes: likes})} ).
-  then((r)=>console.log(r)).catch(e=> console.log(e))
-  setLiked(!liked)
-  
- } */
-
   function liking(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     setLiked(!liked);
   }
@@ -56,7 +48,7 @@ export default function PostComp({ id, uid, name, title, body }: myProps) {
   return (
     <Card className=" w-full px-3 py-2 ">
       <Flex className="items-center gap-3 w-full">
-        <Avatar name={name} />
+        <Avatar name={name} size={'md'}/>
         <Link
           className="text-blue-700 cursor-pointer "
           href={url === "/" ? "users/" + uid : uid.toString()}
@@ -65,11 +57,15 @@ export default function PostComp({ id, uid, name, title, body }: myProps) {
         </Link>
       </Flex>
 
-      <Heading as={"h3"}>{title}</Heading>
-      <Text>{body}</Text>
+      <Container className="p-3 w-full">
+        <Heading as={"h4"} className="w-full">
+          {title.substring(0, 15)}
+        </Heading>
+        <Text  className="w-full">{body}</Text>
+      </Container>
       <Divider />
-      <Box flexGrow={1}>
-        <Text>
+      <Box flexGrow={1} className="py-2">
+        <Text className="flex items-center gap-2">
           <CheckIcon></CheckIcon>A 10 persone piace questo elemento
         </Text>
       </Box>

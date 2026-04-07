@@ -13,7 +13,7 @@ const names = [
 export default function SideBar() {
   return (
     <Flex
-      className=" bg-transparent flex-col hidden md:block md:w-[30%] h-screen py-4"
+      className=" bg-transparent flex-col hidden md:block md:w-[30%] h-screen py-2 sticky top-0"
     >
       <List flexGrow={1}>
         {names.map((el, id) => (
